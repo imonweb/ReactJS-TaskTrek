@@ -2,6 +2,10 @@ import React from 'react'
 
 import "./App.scss"
 import TaskForm from './components/TaskForm'
+import TaskColumn from './components/TaskColumn'
+import TodoIcon from './assets/direct-hit.png'
+import DoingIcon from './assets/glowing-star.png'
+import DoneIcon from './assets/check-mark-button.png'
 
 const App = () => {
   return (
@@ -9,9 +13,9 @@ const App = () => {
       <TaskForm />
     
       <main className='app_main'>
-        <section className="task_column">Section 1</section>
-        <section className="task_column">Section 2</section>
-        <section className="task_column">Section 3</section>
+        <TaskColumn title="To do" icon={TodoIcon}/>
+        <TaskColumn title="Doing" icon={DoingIcon}/>
+        <TaskColumn title="Done" icon={DoneIcon}/>
       </main>
     </div>
   )

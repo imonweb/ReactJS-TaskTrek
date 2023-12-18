@@ -1,9 +1,10 @@
 import React from 'react'
 import './Tag.scss'
 
-const Tag = () => {
+const Tag = (props) => {
+  // console.log("props",props)
   return (
-    <button className="tag">HTML</button>
+    <button className="tag">{props.tagName}</button>
   )
 }
 
