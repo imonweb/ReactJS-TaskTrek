@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 
 import './TaskForm.scss'
 import Tag from './Tag'
-
+// 9th step - {setTasks}
 const TaskForm = ({setTasks}) => {
   /*  Single input - individual state vars for form fields */
   /*
@@ -31,6 +31,7 @@ const TaskForm = ({setTasks}) => {
     tags: []
   })
 
+  // 8th step  -> go to Tag.jsx after
   const checkTag = (tag) => {
     return taskData.tags.some(item => item === tag)
   }
@@ -49,7 +50,8 @@ const TaskForm = ({setTasks}) => {
       })
     }
   }
-  console.log(taskData.tags)
+  // remove log after step 9
+  // console.log(taskData.tags)
 
   // 4th step
   const handleChange = (e) => {
@@ -72,14 +74,19 @@ const TaskForm = ({setTasks}) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(taskData);
+    // 9th step b
     setTasks((prev) => {
       return [...prev, taskData]
     })
+    // Step 11 - clear task selected
+    setTaskData({
+      task: "",
+      status: "todo",
+      tags: []
+    })
   }
 
-
-
-
+ 
   return (
     <header className='app_header'>
 
@@ -90,6 +97,8 @@ const TaskForm = ({setTasks}) => {
           // 4th step = name='task' and onchange={handleChange}
           name='task'
           type="text" 
+          // step 11 clear button on select - value={taskData.task}
+          value={taskData.task}
           className='task_input' 
           placeholder='Enter your task'
           // 1st step
@@ -105,6 +114,7 @@ const TaskForm = ({setTasks}) => {
             <Tag 
               tagName="HTML" 
               selectTag={selectTag} 
+              // 8th step -> step 9 go to App.js
               selected={checkTag("HTML")} 
             />
             <Tag tagName="CSS" selectTag={selectTag} selected={checkTag("CSS")} />
@@ -122,6 +132,8 @@ const TaskForm = ({setTasks}) => {
               // onChange={handleStatusChange}
               // 4th step
               onChange={handleChange}
+              // step 11 clear selected option select- value={taskData.status}
+              value={taskData.status}
             >
               <option value="todo">To Do</option>
               <option value="doing">Doing</option>

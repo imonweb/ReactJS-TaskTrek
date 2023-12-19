@@ -8,17 +8,45 @@ import DoingIcon from './assets/glowing-star.png'
 import DoneIcon from './assets/check-mark-button.png'
 
 const App = () => {
+  // 9th step - Displaying the task cards
   const [tasks, setTasks] = useState([])
   // console.log("tasks", tasks)
 
+  // step 12 - deleting single task
+  const handleDelete = (taskIndex) => {
+    const newTasks = tasks.filter((task, index) => index !== taskIndex)
+    setTasks(newTasks)
+  }
+
   return (
     <div className='app'>
+      {/* step 9 */}
       <TaskForm setTasks={setTasks}/>
     
       <main className='app_main'>
-        <TaskColumn title="To do" icon={TodoIcon} tasks={tasks} status="todo" />
-        <TaskColumn title="Doing" icon={DoingIcon} tasks={tasks} status="doing"/>
-        <TaskColumn title="Done" icon={DoneIcon} tasks={tasks} status="done"/>
+        {/* step 9 - tasks={tasks} status="todo" and go to TaskColumn.jsx for step 10*/}
+        <TaskColumn 
+          title="To do" 
+          icon={TodoIcon} 
+          tasks={tasks} 
+          status="todo" 
+          // Step 12 - pass new props then go to TaskColumn.jsx after
+          handleDelete={handleDelete}
+        />
+        <TaskColumn 
+          title="Doing" 
+          icon={DoingIcon} 
+          tasks={tasks} 
+          status="doing"
+          handleDelete={handleDelete}
+        />
+        <TaskColumn 
+          title="Done" 
+          icon={DoneIcon} 
+          tasks={tasks} 
+          status="done"
+          handleDelete={handleDelete}
+        />
       </main>
     </div>
   )

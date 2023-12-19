@@ -1,6 +1,7 @@
 import React from 'react'
 import './Tag.scss'
 
+// step 8
 const Tag = ({tagName, selectTag, selected}) => {
   const tagStyle = {
     HTML: {backgroundColor: "#fda821"},
@@ -14,6 +15,7 @@ const Tag = ({tagName, selectTag, selected}) => {
     <button 
       type="button"
       className="tag" 
+      // step 8
       style={selected ? tagStyle[tagName] : tagStyle.default}
       onClick={() => selectTag(tagName)} 
     >
